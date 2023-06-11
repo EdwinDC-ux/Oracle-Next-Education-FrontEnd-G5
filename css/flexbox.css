@@ -3,3 +3,6 @@
     align-items: center;
     justify-content: space-between;
 }
+.headerPrincipal-nav {
+    display: flex;
+}
