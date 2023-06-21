@@ -25,9 +25,13 @@
     margin-bottom: 1rem;
 }
 
-.sobre-nosotros {
+.sobre_nosotros__texto--destacado {
     color: var(--fuente-ceniza-oscuro);
     font-weight: 700;
+}
+
+.sobre_nosotros__imagen {
+    display: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -40,12 +44,12 @@
     .sobre_nosotros__titulo {
         text-align: left;
     }
-    .sobre-nosotros__texto--division {
+    .sobre_nosotros__texto--division {
         border-bottom: 1px solid var(--cinza-medio);
 
         padding-bottom: 1.5rem;
     }
-    .sobre-nosotros__imagen {
+    .sobre_nosotros__imagen {
         display: block;
     }
 }
