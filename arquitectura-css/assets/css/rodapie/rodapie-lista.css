@@ -1,3 +1,15 @@
 .rodapie__lista {
     display: flex;
 }
+
+@media screen and (min-width: 0) {
+    .rodapie__lista {
+        gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .rodapie__lista {
+        gap: 0;
+    }
+}
