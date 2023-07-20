@@ -1,57 +1,31 @@
-( () => {
-	const createTask = (evento) => {
-		evento.preventDefault();
-		const formTaskInput = document.querySelector('[data-form-input]');
-		const taskTitle = formTaskInput.value;
-		const list = document.querySelector('[data-list]');
-		const task = document.createElement('li');
-		task.classList.add('card');
-		formTaskInput.value = "";
 
-		const taskContent = document.createElement('div');
-		taskContent.appendChild(checkComplete());
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
 
-		const elementTaskTitle = document.createElement('span');
-		elementTaskTitle.classList.add('task');
-		elementTaskTitle.innerText = taskTitle;
-		taskContent.appendChild(elementTaskTitle);
-		
-		task.appendChild(taskContent);
+function createTask(evento) {
+	evento.preventDefault();
+	const formTaskInput = document.querySelector('[data-form-input]');
+	const taskTitle = formTaskInput.value;
+	const list = document.querySelector('[data-list]');
+	const task = document.createElement('li');
+	task.classList.add('card');
+	formTaskInput.value = "";
 
-		task.appendChild(deleteIcon());
+	const taskContent = document.createElement('div');
+	taskContent.appendChild(checkComplete());
 
-		list.appendChild(task);
-	};
+	const elementTaskTitle = document.createElement('span');
+	elementTaskTitle.classList.add('task');
+	elementTaskTitle.innerText = taskTitle;
+	taskContent.appendChild(elementTaskTitle);
 
-	const botonSubmit = document.querySelector('[data-form-btn]');
+	task.appendChild(taskContent);
 
-	botonSubmit.addEventListener('click', createTask);
+	task.appendChild(deleteIcon());
 
-	const checkComplete = () => {
-		const checkIcon = document.createElement('i');
-		checkIcon.classList.add('far', 'fa-check-square', 'icon');
-		checkIcon.addEventListener('click', completeTask);
+	list.appendChild(task);
+}
 
-		return checkIcon;
-	};
+const botonSubmit = document.querySelector('[data-form-btn]');
 
-	const completeTask = (event) => {
-		const element = event.target;
-		element.classList.toggle('fas');
-		element.classList.toggle('completeIcon');
-		element.classList.toggle('far');
-	};
-
-	const deleteIcon = () => {
-		const trashIcon = document.createElement('i');
-		trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
-		trashIcon.addEventListener('click', deleteTask);
-
-		return trashIcon;
-	};
-
-	const deleteTask = (event) => {
-		const parent = event.target.parentElement;
-		parent.remove();
-	};
-})();
+botonSubmit.addEventListener('click', createTask);
