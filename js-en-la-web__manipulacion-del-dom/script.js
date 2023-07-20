@@ -7,7 +7,6 @@ const createTask = (evento) => {
 	task.classList.add('card');
     formTaskInput.value = "";
 
-    //backticks
     const taskContent = document.createElement('div');
     taskContent.appendChild(checkComplete());
 
@@ -19,14 +18,11 @@ const createTask = (evento) => {
 	task.appendChild(taskContent);
 
 	const trashIcon = document.createElement('i');
-	trashIcon.classList.add('fas');
-	trashIcon.classList.add('fa-trash-alt');
-	trashIcon.classList.add('trashIcon');
-	trashIcon.classList.add('icon');
+	trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
 	task.appendChild(trashIcon);
 
     list.appendChild(task);
-}
+};
 
 const botonSubmit = document.querySelector('[data-form-btn]');
 
@@ -34,9 +30,15 @@ botonSubmit.addEventListener('click', createTask);
 
 const checkComplete = () => {
 	const checkIcon = document.createElement('i');
-	checkIcon.classList.add('far');
-	checkIcon.classList.add('fa-check-square');
-	checkIcon.classList.add('icon');
+	checkIcon.classList.add('far', 'fa-check-square', 'icon');
+	checkIcon.addEventListener('click', completeTask);
 
-	return checkIcon
-}
+	return checkIcon;
+};
+
+const completeTask = (event) => {
+	const element = event.target;
+	element.classList.toggle('fas');
+	element.classList.toggle('completeIcon');
+	element.classList.toggle('far');
+};
