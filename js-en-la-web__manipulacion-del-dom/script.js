@@ -18,9 +18,7 @@
 		
 		task.appendChild(taskContent);
 
-		const trashIcon = document.createElement('i');
-		trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
-		task.appendChild(trashIcon);
+		task.appendChild(deleteIcon());
 
 		list.appendChild(task);
 	};
@@ -42,5 +40,18 @@
 		element.classList.toggle('fas');
 		element.classList.toggle('completeIcon');
 		element.classList.toggle('far');
+	};
+
+	const deleteIcon = () => {
+		const trashIcon = document.createElement('i');
+		trashIcon.classList.add('fas', 'fa-trash-alt', 'trashIcon', 'icon');
+		trashIcon.addEventListener('click', deleteTask);
+
+		return trashIcon;
+	};
+
+	const deleteTask = (event) => {
+		const parent = event.target.parentElement;
+		parent.remove();
 	};
 })();
