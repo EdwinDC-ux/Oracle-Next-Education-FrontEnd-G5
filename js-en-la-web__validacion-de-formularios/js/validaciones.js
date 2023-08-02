@@ -1,5 +1,5 @@
 const validadores = {
-    'nacimiento': (input) => validarNacimiento(input)
+    nacimiento: (input) => validarNacimiento(input)
 };
 
 const tipoErrores = [
@@ -24,6 +24,10 @@ const mensajesError = {
     nacimiento: {
         valueMissing: "El campo fecha de nacimiento no puede estar vacío",
         customError: "Debes tener al menos 18 años de edad"
+    },
+    telefono: {
+        valueMissing: "El campo de telefono no puede estar vacío",
+        patternMismatch: "El formato requerido es XXXXXXXXXX (10 números)"
     }
 };
 
