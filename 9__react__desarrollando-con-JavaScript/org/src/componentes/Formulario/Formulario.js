@@ -1,9 +1,13 @@
 import './Formulario.css';
+import CampoTexto from '../CampoTexto';
 
 const Formulario = () => {
     return <section className="formulario">
         <form>
             <h2>Rellena el formuilario para crear el colaborador.</h2>
+            <CampoTexto />
+            <CampoTexto />
+            <CampoTexto />
         </form>
     </section>
 }
