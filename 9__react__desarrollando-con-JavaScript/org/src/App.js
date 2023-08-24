@@ -38,28 +38,7 @@ function App() {
     nombre: "Jose Gonzalez",
     puesto: "Dev FullStack"
   }]);
-
-  //Ternario --> condicion ? seMuestra : noSeMuestra}
-  //condicion && valorTrue
-
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarFormulario);
-  }
-
-  //Registrar colaborador
-  const registrarColaborador = (colaborador) => {
-    console.log('Nuevo colaborador', colaborador);
-    //Spread operator
-    actualizarColaboradores([...colaboradores, colaborador]);
-  }
-
-  //Eliminar colaborador
-  const eliminarColaborador = () => {
-    console.log('Eliminar colaborador');
-  }
-
-  //Lista de equipos
-  const equipos = [
+  const [equipos, actualizarEquipos] = useState([
     {
       titulo: "Programación",
       colorPrimario: "#57c278",
@@ -95,7 +74,40 @@ function App() {
       colorPrimario: "#ffba29",
       colorSecundario: "#ffeedf"
     }
-];
+]);
+
+  //Ternario --> condicion ? seMuestra : noSeMuestra}
+  //condicion && valorTrue
+
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarFormulario);
+  }
+
+  //Registrar colaborador
+  const registrarColaborador = (colaborador) => {
+    console.log('Nuevo colaborador', colaborador);
+    //Spread operator
+    actualizarColaboradores([...colaboradores, colaborador]);
+  }
+
+  //Eliminar colaborador
+  const eliminarColaborador = () => {
+    console.log('Eliminar colaborador');
+  }
+
+  //Actualizar color de equipos
+  const actualizarColor = (color, titulo) => {
+    console.log('Actualizar: ',color, titulo);
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.titulo === titulo) {
+        equipo.colorPrimario = color;
+      }
+
+      return equipo;
+    });
+
+    actualizarEquipos(equiposActualizados);
+  }
 
   return (
     <div>
@@ -114,6 +126,7 @@ function App() {
           key={equipo.titulo}
           colaboradores={colaboradores.filter( colaborador => colaborador.equipo === equipo.titulo )}
           eliminarColaborador={eliminarColaborador}
+          actualizarColor={actualizarColor}
         />)
       }
 
