@@ -1,13 +1,15 @@
 import './Colaborador.css';
 
-function Colaborador() {
+function Colaborador(props) {
+    const {nombre,foto,puesto} = props.datos
+
     return <div className="colaborador">
         <div className="encabezado">
-            <img src="https://github.com/harlandlohora.png" alt="Harland" />
+            <img src={foto} alt={nombre} />
         </div>
         <div className="info">
-            <h4>Harlan Lohora</h4>
-            <h5>Instructor</h5>
+            <h4>{nombre}</h4>
+            <h5>{puesto}</h5>
         </div>
     </div>
 }
