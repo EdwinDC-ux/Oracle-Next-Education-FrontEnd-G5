@@ -18,6 +18,14 @@ function Equipo(props) {
         {
             colaboradores.length > 0 &&
             <section className="equipo" style={estiloSection}>
+                <input
+                    type="color"
+                    className="input-color"
+                    value={colorSecundario}
+                    onChange={(e) => {
+                        
+                    }}
+                />
                 <h3 style={estiloTitulo}>{titulo}</h3>
                 <div className="colaboradores" >
                     {
