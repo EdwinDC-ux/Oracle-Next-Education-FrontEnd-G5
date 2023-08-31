@@ -5,6 +5,10 @@ export const Icono = styled.img`
     width: 25px;
 `;
 
+export const IconoTema = styled(Icono)`
+    filter: ${({theme}) => theme.filter};
+`;
+
 export const Btn = styled.button`
     margin: 15px auto 0px auto;
     display: block;
