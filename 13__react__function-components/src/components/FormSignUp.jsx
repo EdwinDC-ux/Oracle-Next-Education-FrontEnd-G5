@@ -18,6 +18,14 @@ function FormSignUp ({ handleSubmit }) {
         }
     })
 
+    function validarNombre (nombre) {
+        if (nombre.length >= 3) {
+            return { name: { error: false, message: '' } }
+        } else {
+            return { name: { error: true, message: 'Deben ser al menos 3 caracteres' } }
+        }
+    }
+
     useEffect(() => {
         console.log('Name cambió: ',name);
     }, [name]);
@@ -41,6 +49,11 @@ function FormSignUp ({ handleSubmit }) {
             value={name}
             error={errors.name.error}
             helperText={errors.name.error ? errors.name.message : ''}
+            onBlur={(e) => {
+                setErrors(
+                    validarNombre(e.target.value)
+                )
+            }}
         />
         <TextField
             id='lastName'
