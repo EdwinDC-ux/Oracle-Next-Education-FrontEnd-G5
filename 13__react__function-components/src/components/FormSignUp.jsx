@@ -11,6 +11,12 @@ function FormSignUp ({ handleSubmit }) {
     const [email, setEmail] = useState('');
     const [prom, setProm] = useState(true);
     const [nov, setNov] = useState(false);
+    const [errors, setErrors] = useState({
+        name: {
+            error: false,
+            message: 'Deben ser al menos 3 caracteres'
+        }
+    })
 
     useEffect(() => {
         console.log('Name cambió: ',name);
@@ -33,6 +39,8 @@ function FormSignUp ({ handleSubmit }) {
                 setName(e.target.value)
             }}
             value={name}
+            error={errors.name.error}
+            helperText={errors.name.error ? errors.name.message : ''}
         />
         <TextField
             id='lastName'
