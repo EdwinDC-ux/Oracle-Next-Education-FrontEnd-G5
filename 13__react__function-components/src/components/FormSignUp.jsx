@@ -7,12 +7,21 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 function FormSignUp () {
     const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [prom, setProm] = useState(true);
+    const [nov, setNov] = useState(false);
 
     useEffect(() => {
         console.log('Name cambió: ',name);
     }, [name]);
 
-    return <form>
+    return <form onSubmit={(e) => {
+        e.preventDefault();
+        console.log({
+            name, lastName, email, prom, nov
+        });
+    }}>
         <TextField
             id='name'
             label='Nombre'
@@ -31,6 +40,8 @@ function FormSignUp () {
             variant='outlined'
             fullWidth
             margin='normal'
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
         />
         <TextField
             id='email'
@@ -38,12 +49,15 @@ function FormSignUp () {
             variant='outlined'
             fullWidth
             margin='normal'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
         />
         <FormGroup>
             <FormControlLabel
                 control={
                     <Switch
-                        defaultChecked
+                        checked={ prom }
+                        onChange={(e) => setProm(e.target.checked)}
                     />
                 }
                 label='Promociones'
@@ -51,14 +65,15 @@ function FormSignUp () {
             <FormControlLabel
                 control={
                     <Switch
-                        defaultChecked
+                        checked={ nov }
+                        onChange={(e) => setNov(e.target.checked)}
                     />
                 }
                 label='Novedades'
             />
         </FormGroup>
         
-        <Button variant="contained">Registrarse</Button>
+        <Button variant="contained" type='submit'>Registrarse</Button>
     </form>
 }
 
