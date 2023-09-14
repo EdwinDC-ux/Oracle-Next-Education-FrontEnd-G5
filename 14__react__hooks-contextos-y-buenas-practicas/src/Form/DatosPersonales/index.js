@@ -19,7 +19,13 @@ const DatosPersonales = ({ updateStep }) => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        updateStep(2);
+        if (name.valid && lastName.valid && phone.valid) {
+          console.log('siguiente formulario');
+          console.log({name, lastName, phone});
+          updateStep(2);
+        } else {
+          console.log('No hacer nada');
+        }
       }}
     >
       <TextField
@@ -34,6 +40,8 @@ const DatosPersonales = ({ updateStep }) => {
           const valid = validarNombre(value);
           setName({value, valid});
         }}
+        error={name.valid === false}
+        helperText={name.valid === false && "Ingresa al menos 2 caracteres y máximo 30"}
       />
       <TextField
         label="Apellidos"
@@ -47,6 +55,8 @@ const DatosPersonales = ({ updateStep }) => {
           const valid = validarApellidos(value);
           setLastName({value, valid});
         }}
+        error={lastName.valid === false}
+        helperText={lastName.valid === false && "Ingresa al menos 2 caracteres y máximo 50"}
       />
       <TextField
         label="Número telefónico"
@@ -61,6 +71,8 @@ const DatosPersonales = ({ updateStep }) => {
           const valid = validarTelefono(value);
           setPhone({value, valid});
         }}
+        error={phone.valid === false}
+        helperText={phone.valid === false && "Ingresa al menos 8 digitos y máximo 14 digitos"}
       />
       <Button variant="contained" type="submit">
         Siguiente
