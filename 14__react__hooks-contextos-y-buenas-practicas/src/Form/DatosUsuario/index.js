@@ -5,11 +5,11 @@ import { validarEmail, validarPassword } from "./validaciones";
 function DatosUsuario (props) {
   const [email, setEmail] = useState({
     value: '',
-    valid: true
+    valid: null
   });
   const [password, setPassword] = useState({
     value: '',
-    valid: true
+    valid: null
   });
   
   return (
@@ -24,7 +24,13 @@ function DatosUsuario (props) {
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log({email, password});
+        if (email.valid && password.valid) {
+          console.log('siguiente formulario');
+          console.log({email, password});
+        } else {
+          console.log('No hacer nada');
+        }
+        
       }}
     >
       <TextField
@@ -33,8 +39,8 @@ function DatosUsuario (props) {
         fullWidth
         margin="dense"
         type="email"
-        error={false}
-        helperText={false && "Ingresa un correo electrónico válido"}
+        error={email.valid === false}
+        helperText={email.valid === false && "Ingresa un correo electrónico válido"}
         value={email.value}
         onChange={(input) => {
           const email = input.target.value;
@@ -48,6 +54,8 @@ function DatosUsuario (props) {
         fullWidth
         margin="dense"
         type="password"
+        error={password.valid === false}
+        helperText={password.valid === false && "Ingresa una contraseña válida, al menos 8 caracteres y máximo 20"}
         value={password.value}
         onChange={(input) => {
           const password = input.target.value;
