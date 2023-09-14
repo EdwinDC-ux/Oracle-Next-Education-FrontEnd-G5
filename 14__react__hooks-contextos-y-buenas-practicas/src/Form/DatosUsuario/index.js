@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
+import { validarEmail, validarPassword } from "./validaciones";
 
 function DatosUsuario (props) {
   const [email, setEmail] = useState({
@@ -36,7 +37,9 @@ function DatosUsuario (props) {
         helperText={false && "Ingresa un correo electrónico válido"}
         value={email.value}
         onChange={(input) => {
-          setEmail({ value: input.target.value, valid: true })
+          const email = input.target.value;
+          const valido = validarEmail(email);
+          setEmail({ value: email, valid: valido });
         }}
       />
       <TextField
@@ -47,7 +50,8 @@ function DatosUsuario (props) {
         type="password"
         value={password.value}
         onChange={(input) => {
-          setPassword({ value: input.target.value, valid: true })
+          const password = input.target.value;
+          setPassword({ value: password, valid: validarPassword(password) })
         }}
       />
       <Button variant="contained" type="submit">
