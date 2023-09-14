@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { validarEmail, validarPassword } from "./validaciones";
 
-function DatosUsuario (props) {
+function DatosUsuario ({ updateStep }) {
   const [email, setEmail] = useState({
     value: '',
     valid: null
@@ -27,6 +27,7 @@ function DatosUsuario (props) {
         if (email.valid && password.valid) {
           console.log('siguiente formulario');
           console.log({email, password});
+          updateStep(1);
         } else {
           console.log('No hacer nada');
         }
