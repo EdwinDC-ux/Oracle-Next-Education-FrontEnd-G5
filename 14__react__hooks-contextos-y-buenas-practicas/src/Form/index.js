@@ -21,7 +21,7 @@ const Form = () => {
 
   const updateStep = (step) => {
     setStep(step);
-  }
+  };
 
   const steps = {
     0: <DatosUsuario updateStep={updateStep} />,
@@ -30,9 +30,12 @@ const Form = () => {
     3: <Complete />
   };
 
-  const onSubmit = () => {
+  const onSubmit = () => {};
 
-  }
+  const handleChange = (element, position, currentStep, validator) => {
+    const value = element.target.value;
+    const valid = validator(value)
+  };
 
   const stepsFlow = {
     0: {
@@ -42,7 +45,7 @@ const Form = () => {
           type: 'email',
           value: '',
           valid: null,
-          onChange: () => {},
+          onChange: handleChange,
           helperText: 'Ingresa un correo electrónico válido',
           validator: validarEmail
         },
@@ -51,7 +54,7 @@ const Form = () => {
           type: 'password',
           value: '',
           valid: null,
-          onChange: () => {},
+          onChange: handleChange,
           helperText: 'Ingresa una contraseña válida, al menos 8 caracteres y máximo 20',
           validator: validarPassword
         }
@@ -59,7 +62,7 @@ const Form = () => {
       buttonText: 'Siguiente',
       onSubmit
     }
-  }
+  };
 
   return (
     <Box
