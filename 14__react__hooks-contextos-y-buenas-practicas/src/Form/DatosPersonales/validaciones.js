@@ -13,4 +13,5 @@ export const validarApellidos = (apellidos) => {
 export const validarTelefono = (telefono) => {
     const length = telefono.length;
 
-    return (length >= 8 && length <= 14) ? true : false;}
+    return (length >= 8 && length <= 14) ? true : false;
+}
