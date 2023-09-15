@@ -1,12 +1,16 @@
 import React, { useState, useContext } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { CounterContext } from "../../Context";
+import useAuth from "../../Hooks/useAuth";
 
 function Step ({ data, step }) {
 
     const { inputs, buttonText, onSubmit } = data;
 
     const counterData = useContext(CounterContext);
+
+    const access = useAuth(counterData.user.jwt);
+    console.log(access)
     
     return (
         <Box
